@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "988264354359",
+    "firebase_url": "https://mundylingo.firebaseio.com",
+    "project_id": "mundylingo",
+    "storage_bucket": "mundylingo.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:988264354359:android:c06aa44aacd57e59",
+        "android_client_info": {
+          "package_name": "com.dev.thunderkilll.mundylingo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "988264354359-hg9k7sq2qk84jpchcqsf2m8tgtk071lj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD2x2eO8XbfxIEqT0VnX0whDM90xrkiRYY"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
