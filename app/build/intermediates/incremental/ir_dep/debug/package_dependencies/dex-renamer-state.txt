@@ -1,0 +1,4 @@
+#Fri Nov 23 20:31:08 GMT+01:00 2018
+base.0=C\:\\Users\\khaled22\\AndroidStudioProjects\\MundyLingo\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\147
+path.0=classes.dex
+renamed.0=classes.dex

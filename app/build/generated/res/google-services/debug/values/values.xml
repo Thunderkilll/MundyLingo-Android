@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="default_web_client_id" translatable="false">988264354359-hg9k7sq2qk84jpchcqsf2m8tgtk071lj.apps.googleusercontent.com</string>
+    <string name="firebase_database_url" translatable="false">https://mundylingo.firebaseio.com</string>
+    <string name="gcm_defaultSenderId" translatable="false">988264354359</string>
+    <string name="google_api_key" translatable="false">AIzaSyD2x2eO8XbfxIEqT0VnX0whDM90xrkiRYY</string>
+    <string name="google_app_id" translatable="false">1:988264354359:android:c06aa44aacd57e59</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyD2x2eO8XbfxIEqT0VnX0whDM90xrkiRYY</string>
+    <string name="google_storage_bucket" translatable="false">mundylingo.appspot.com</string>
+    <string name="project_id" translatable="false">mundylingo</string>
+</resources>

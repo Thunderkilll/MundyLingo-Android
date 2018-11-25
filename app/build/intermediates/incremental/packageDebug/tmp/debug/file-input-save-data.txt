@@ -1,0 +1,7 @@
+#Internal package file, do not edit.
+#Sat Nov 24 21:41:19 GMT+01:00 2018
+0.baseType=DIRECTORY
+0.base=C\:\\Users\\khaled22\\AndroidStudioProjects\\MundyLingo\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\153
+0.path=classes.dex
+0.set=DEX
+count=1
