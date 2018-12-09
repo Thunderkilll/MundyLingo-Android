@@ -1,0 +1,20 @@
+ajout reponse :
+http://localhost/miniprojetwebservice/ajoutReponse.php?level=3&text=reponse%20au%20question2&image=url%20de%20l%20image&vocal=url%20reponse%20for%20q%202&question=2
+
+select test level :
+http://localhost/miniprojetwebservice/selectTestLevel.php?level=1
+
+select reponse de question:
+http://localhost/miniprojetwebservice/selectReponsedeQuestion.php?question=2&level=3
+
+select question par level :
+
+http://localhost/miniprojetwebservice/selectQuestion.php?level=3
+
+ajout prerequis :
+
+http://localhost/miniprojetwebservice/ajoutPrerequis.php?objet=objet%20&text=prerequis%20de%20cette%20level%20sont%20fran%C3%A7as%20basics&level=2
+
+login :
+
+http://localhost/miniprojetwebservice/login.php?username=user001&password=madara123120
