@@ -28,7 +28,7 @@ public class SplashScreen extends AppCompatActivity {
          * Called when the activity is first created.
          */
         Thread splashTread;
-SharedPreferences sharedPrefereces ;
+
         @Override
         public void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
@@ -38,10 +38,7 @@ SharedPreferences sharedPrefereces ;
 
         }
 
-    public String GetPrefs() {
-        return sharedPrefereces.getString("username","");
 
-    }
         private void StartAnimations() {
             Animation anim = AnimationUtils.loadAnimation(this, R.anim.alpha);
             anim.reset();

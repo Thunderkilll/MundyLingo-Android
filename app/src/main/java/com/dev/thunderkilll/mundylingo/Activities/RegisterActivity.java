@@ -82,7 +82,7 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     public void toHome(View view) {
-        Intent intent = new Intent(this, Main3Activity.class);
+        Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
 }

@@ -1,20 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#00b0ff</color>
-    <color name="colorPrimaryDark">#00b0ff</color>
+
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+
+    <!-- other colors  color-->
     <color name="darkblue">#230460</color>
     <color name="lightblue">#5600ff</color>
-    <color name="colorAccent">#FF4081</color>
-    <color name="blanc">#FFFFFF</color>
+    <color name="blanc">#ffffff</color>
     <color name="black">#000000</color>
-    <color name="dark_red">#CC0000</color>
+    <color name="dark_red">#cc0000</color>
     <color name="goodred">#f90000</color>
-    <color name="yellow">#ffd700</color>
+    <color name="yellow">#fdda1a</color>
     <color name="dark_grey">#6c6c6c</color>
     <color name="dark_violet">#77003c</color>
     <color name="light_green">#b0d996</color>
     <color name="green">#008000</color>
     <color name="bleuCiel">#00f9ff</color>
+    <color name="greyTransparent">#93979797</color>
+
+
+
+
+    <!-- Screens background color-->
+    <color name="bg_screen1">#f64c73</color>
+    <color name="bg_screen2">#20d2bb</color>
+    <color name="bg_screen3">#3395ff</color>
+    <color name="bg_screen4">#c873f4</color>
+    <color name="bg_screen5">#FFE19742</color>
+    <color name="bg_screen6">#FF328614</color>
+
+    <!-- dots inactive colors -->
+    <color name="dot_dark_screen1">#d1395c</color>
+    <color name="dot_dark_screen2">#14a895</color>
+    <color name="dot_dark_screen3">#2278d4</color>
+    <color name="dot_dark_screen4">#a854d4</color>
+    <color name="dot_dark_screen5">#ffd700</color>
+    <color name="dot_dark_screen6">#008000</color>
+
+    <!-- dots active colors -->
+    <color name="dot_light_screen1">#f98da5</color>
+    <color name="dot_light_screen2">#8cf9eb</color>
+    <color name="dot_light_screen3">#93c6fd</color>
+    <color name="dot_light_screen4">#e4b5fc</color>
+    <color name="dot_light_screen5">#FFFFED8A</color>
+    <color name="dot_light_screen6">#b0d996</color>
+    <!-- bottom Navigation Bar -->
+    <color name="bgBottomNavigation">#fe485a</color>
+
+    <array name="array_dot_active">
+        <item>@color/dot_light_screen1</item>
+        <item>@color/dot_light_screen2</item>
+        <item>@color/dot_light_screen3</item>
+        <item>@color/dot_light_screen4</item>
+        <item>@color/dot_light_screen5</item>
+        <item>@color/dot_light_screen6</item>
+    </array>
+
+    <array name="array_dot_inactive">
+        <item>@color/dot_dark_screen1</item>
+        <item>@color/dot_dark_screen2</item>
+        <item>@color/dot_dark_screen3</item>
+        <item>@color/dot_dark_screen4</item>
+        <item>@color/dot_dark_screen5</item>
+        <item>@color/dot_dark_screen6</item>
+
+    </array>
 
 
 

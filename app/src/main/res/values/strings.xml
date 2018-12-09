@@ -1,5 +1,48 @@
 <resources>
-    <string name="app_name">M y L</string>
+    <string name="app_name">MyLanguageTeacher</string>
+    <string name="title_activity_welcome">Home Screen</string>
+    <string name="next">NEXT</string>
+    <string name="skip">SKIP</string>
+    <string name="start">GOT IT</string>
     <string name="Open">Open</string>
     <string name="Close">Close</string>
+    <!-- Slider Strings -->
+    <!-- Slider 1-->
+    <string name="slide_1_title">Welcome To MundyLingo</string>
+    <string name="slide_1_desc">We are going to learn some languages together !</string>
+    <!-- Slider 2-->
+    <string name="slide_2_title">We will play </string>
+    <string name="slide_2_desc">We gonna have fun with playing choose the best response !</string>
+    <!-- Slider 3-->
+    <string name="slide_3_title">We going To  Learn </string>
+    <string name="slide_3_desc">Best courses simplified just for you !</string>
+    <!-- Slider 3-->
+    <string name="slide_4_title">Friends From all the World</string>
+    <string name="slide_4_desc">Check out other player stats and talk with them !</string>
+    <!-- Slider 5-->
+    <string name="slide_5_title">Get ready for the Challenge </string>
+    <string name="slide_5_desc">Get the best Score in each Level and beat other player  !</string>
+    <!-- Slider 6-->
+    <string name="slide_6_title">GOOD LUCK  </string>
+    <string name="slide_6_desc">GO AND GET THE BEST OF THIS EXPERIENCE !</string>
+    <!-- others -->
+    <string name="play_again_desc">To see the welcome slider again, goto Settings -> apps -> welcome slider -> clear data</string>
+    <string name="play_again">Play Again</string>
+    <!-- facebook ID  -->
+    <string name="facebook_app_id">278184122767496</string>
+    <string name="fb_login_protocol_scheme">fb278184122767496</string>
+
+    <!-- buttom navigation bar -->
+
+    <string name="title_shop">HOME</string>
+    <string name="title_gifts">CORSES</string>
+    <string name="title_cart">ADVANCEMENT</string>
+    <string name="title_profile">PROFILE</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="home_fragment">select what you want to learn today </string>
+    <string name="cours_fragment">available courses today</string>
+    <string name="user_profile">User Profile</string>
+    <string name="welcome">User Name </string>
 </resources>

@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/holo_orange_light"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:weightSum="10">
+
+        <Button
+
+            android:id="@+id/btnenglish"
+            android:layout_width="311dp"
+            android:layout_height="71dp"
+            android:layout_weight="9"
+            android:background="#00db7a7a"
+            android:fontFamily="monospace"
+            android:onClick="MapEnglishRedirect"
+            android:shadowColor="#f40000"
+            android:shadowDx="2"
+            android:shadowDy="2"
+            android:shadowRadius="2"
+            android:text="English"
+            android:textAlignment="center"
+            android:textColor="#f7b81414"
+            android:textSize="50sp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:layout_width="78dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:scaleY="2"
+            android:scaleX="1.04"
+            android:src="@drawable/btnbg1" />
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:weightSum="10">
+
+        <Button
+            android:id="@+id/btnFrancais"
+            android:layout_width="305dp"
+            android:layout_height="71dp"
+            android:layout_weight="9"
+            android:background="@android:color/transparent"
+            android:fontFamily="monospace"
+            android:shadowColor="#f40000"
+            android:shadowDx="2"
+            android:shadowDy="2"
+            android:shadowRadius="2"
+            android:text="Français"
+            android:textAlignment="center"
+            android:textColor="#f7b81414"
+            android:textSize="50sp"
+            android:textStyle="bold" />
+        <ImageView
+            android:layout_width="78dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:scaleY="2"
+            android:scaleX="1.04"
+            android:src="@drawable/french_flag" />
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:weightSum="10">
+
+        <Button
+            android:id="@+id/btnSpanish"
+            android:layout_width="308dp"
+            android:layout_height="71dp"
+            android:layout_weight="9"
+            android:background="@android:color/transparent"
+            android:fontFamily="monospace"
+            android:shadowColor="#f40000"
+            android:shadowDx="2"
+            android:shadowDy="2"
+            android:shadowRadius="2"
+            android:text="Español"
+            android:textAlignment="center"
+            android:textColor="#f7b81414"
+            android:textSize="50sp"
+            android:textStyle="bold" />
+    <ImageView
+        android:layout_width="78dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:scaleY="2"
+        android:scaleX="1.04"
+        android:src="@drawable/spanishflag" />
+
+</LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:weightSum="10">
+
+        <Button
+            android:id="@+id/btnGerman"
+            android:layout_width="308dp"
+            android:layout_height="71dp"
+            android:layout_weight="9"
+
+            android:background="@android:color/transparent"
+            android:fontFamily="monospace"
+            android:text="German"
+            android:textAlignment="center"
+            android:textColor="#f7b81414"
+            android:textSize="50sp"
+            android:textStyle="bold" />
+<ImageView
+android:layout_width="78dp"
+android:layout_height="match_parent"
+android:layout_weight="1"
+android:scaleY="2"
+android:scaleX="1.04"
+android:src="@drawable/germany" />
+
+    </LinearLayout>
+
+
+</LinearLayout>
+
