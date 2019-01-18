@@ -9,7 +9,7 @@
     <dimen name="slide_title">30dp</dimen>
     <dimen name="slide_desc">16dp</dimen>
     <dimen name="desc_padding">40dp</dimen>
-	<dimen name="card_margin">5dp</dimen>
+    <dimen name="card_margin">5dp</dimen>
     <dimen name="card_album_radius">3dp</dimen>
     <dimen name="card_cover_height">140dp</dimen>
     <dimen name="card_title_padding">10dp</dimen>

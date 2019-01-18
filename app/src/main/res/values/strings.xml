@@ -42,7 +42,22 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="home_fragment">select what you want to learn today </string>
+
     <string name="cours_fragment">available courses today</string>
     <string name="user_profile">User Profile</string>
     <string name="welcome">User Name </string>
+    <string name="Leader_fragment">Top Players from each Category</string>
+    <string name="langue1">ENGLISH</string>
+    <string name="langue2">FRENCH</string>
+    <string name="langue3">SPANISH</string>
+    <string name="langue4">GERMAN</string>
+    <string name="title_activity_test">TestActivity</string>
+
+
+    <!-- about us text  -->
+    <string name="about_us"> We are a team of studet developper at ESPRIT we are mobile developpers and we work on android ad ios projects
+    . Our names are Khaled Guesmi and Raoudha Nalouti .
+    </string>
+
+    <string name="devs">Built by Khaled Guesmi and Raoudha Nalouti\n Version: 1.0 beta</string>
 </resources>

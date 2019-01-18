@@ -1,0 +1,75 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+  >
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/leader_row"
+        android:layout_width="379dp"
+        android:layout_height="172dp"
+        android:layout_gravity="center"
+        android:layout_margin="@dimen/card_margin"
+        android:clickable="true"
+        android:elevation="3dp"
+        android:foreground="?attr/selectableItemBackground"
+        card_view:cardCornerRadius="@dimen/card_album_radius">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="192dp">
+
+            <ImageView
+                android:id="@+id/user_img"
+                android:layout_width="128dp"
+                android:layout_height="112dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="38dp"
+                android:layout_marginEnd="57dp"
+                android:layout_toStartOf="@+id/separateur"
+                android:src="@drawable/reg_edittext_style"
+                tools:srcCompat="@tools:sample/avatars" />
+
+            <TextView
+                android:id="@+id/user_name"
+                android:layout_width="165dp"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/user_img"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="6dp"
+                android:layout_marginEnd="47dp"
+                android:background="@drawable/reg_edittext_style" />
+
+            <TextView
+                android:id="@+id/separateur"
+                android:layout_width="200dp"
+                android:layout_height="10dp"
+
+                android:layout_below="@+id/user_name"
+                android:layout_alignStart="@+id/user_name"
+                android:layout_marginStart="1dp"
+                android:layout_marginTop="-1dp"
+                android:background="@color/blanc" />
+
+            <TextView
+                android:id="@+id/user_score"
+                android:layout_width="163dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/separateur"
+                android:layout_alignStart="@+id/user_name"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="3dp"
+                android:layout_marginTop="7dp"
+                android:layout_marginEnd="46dp"
+                android:background="@drawable/reg_edittext_style" />
+
+
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
+
+
+
+</LinearLayout>

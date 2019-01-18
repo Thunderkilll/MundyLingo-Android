@@ -12,26 +12,39 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Activities.LoginActivity" />
-        <activity android:name=".Activities.WelcomeActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+        <activity
+            android:name=".Activities.LoginActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Activities.WelcomeActivity"
+            android:screenOrientation="portrait" />
 
         <provider
             android:name="com.facebook.FacebookContentProvider"
             android:authorities="com.facebook.app.FacebookContentProviderandyourappidfromfacebookconsole"
             android:exported="true" />
 
-        <activity android:name=".Activities.SplashScreen" />
-        <activity android:name=".Activities.RegisterActivity" />
-        <activity android:name=".Activities.MainActivity" />
-        <activity android:name=".Activities.MapLanguageActivity" />
-        <activity android:name=".Activities.MapFr" />
-        <activity android:name=".Activities.MapSP" />
+        <activity
+            android:name=".Activities.SplashScreen"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".Activities.MainActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Activities.CoursEnglishActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Activities.CoursFrançais"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Activities.CoursSpanish"
+            android:screenOrientation="portrait" />
 
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
@@ -53,7 +66,16 @@
                 <data android:scheme="@string/fb_login_protocol_scheme" />
             </intent-filter>
         </activity>
-        <activity android:name=".Activities.ConjugaisonDetailActivity"></activity>
+        <activity
+            android:name=".Activities.ConjugaisonDetailActivity"
+            android:parentActivityName=".Activities.MainActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Activities.Main2Activity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".Activities.CoursGermanActivity" />
+        <activity android:name=".Activities.CoursPrefActivity" />
+        <activity android:name=".AboutUs.AboutUsActivity"></activity>
     </application>
 
 </manifest>

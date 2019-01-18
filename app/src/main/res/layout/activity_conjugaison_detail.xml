@@ -1,13 +1,149 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activities.ConjugaisonDetailActivity"
-    android:background="@color/bg_screen5">
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+    android:background="@drawable/adroid">
 
-</android.support.constraint.ConstraintLayout>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        tools:context=".Activities.ConjugaisonDetailActivity">
+
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/textfonts"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="title"
+                    android:textAlignment="center"
+                    android:textColor="@color/blanc"
+                    android:textSize="50sp" />
+
+                <TextView
+                    android:id="@+id/textfonts1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="title"
+                    android:textAlignment="center"
+                    android:textColor="@color/blanc"
+                    android:textSize="38sp" />
+
+
+                <TextView
+                    android:id="@+id/textfonts2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="center"
+                    android:textColor="@color/blanc"
+                    android:textSize="32sp" />
+
+                <TextView
+                    android:id="@+id/separateur2"
+                    android:layout_width="match_parent"
+                    android:layout_height="4dp"
+                    android:background="@color/blanc"
+                    android:text="                             "
+                    android:textAlignment="center"
+                    android:textSize="48sp" />
+
+                <TextView
+                    android:id="@+id/textfonts3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="center"
+                    android:textColor="@color/blanc"
+                    android:textSize="32sp" />
+
+                <TextView
+                    android:id="@+id/separateur3"
+                    android:layout_width="match_parent"
+                    android:layout_height="4dp"
+                    android:background="@color/blanc"
+                    android:text="                             "
+                    android:textAlignment="center"
+                    android:textSize="48sp" />
+
+
+                <TextView
+                    android:id="@+id/textfonts4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="center"
+                    android:textColor="@color/blanc"
+                    android:textSize="32sp" />
+
+                <TextView
+                    android:id="@+id/separateur4"
+                    android:layout_width="match_parent"
+                    android:layout_height="4dp"
+                    android:background="@color/blanc"
+                    android:text="                             "
+                    android:textAlignment="center"
+                    android:textSize="48sp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:layout_width="200dp"
+                        android:layout_height="wrap_content"
+
+                        android:background="@color/lightblue"
+                        android:onClick="GoToQuestion"
+                        android:text="Start Level"
+                        android:textColor="@color/blanc"
+                        android:textSize="28sp" />
+
+
+                </LinearLayout>
+
+                <android.support.design.widget.FloatingActionButton
+                    android:id="@+id/addcour"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="300dp"
+                    app:layout_anchor="@+id/linearLayout"
+                    app:layout_anchorGravity="right|top"
+                    app:srcCompat="@android:drawable/ic_input_add" />
+            </LinearLayout>
+
+        </ScrollView>
+
+
+    </LinearLayout>
+
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbarDt"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:popupTheme="@style/AppTheme.PopupOverlay" />
+
+    </android.support.design.widget.AppBarLayout>
+
+</android.support.design.widget.CoordinatorLayout>

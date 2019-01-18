@@ -11,7 +11,7 @@
     <color name="blanc">#ffffff</color>
     <color name="black">#000000</color>
     <color name="dark_red">#cc0000</color>
-    <color name="goodred">#f90000</color>
+    <color name="goodred">#b7f90000</color>
     <color name="yellow">#fdda1a</color>
     <color name="dark_grey">#6c6c6c</color>
     <color name="dark_violet">#77003c</color>
@@ -25,7 +25,7 @@
 
     <!-- Screens background color-->
     <color name="bg_screen1">#f64c73</color>
-    <color name="bg_screen2">#20d2bb</color>
+    <color name="bg_screen2">#a620d2bb</color>
     <color name="bg_screen3">#3395ff</color>
     <color name="bg_screen4">#c873f4</color>
     <color name="bg_screen5">#FFE19742</color>

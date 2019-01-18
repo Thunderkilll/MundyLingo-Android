@@ -13,41 +13,225 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="center_horizontal"
-        android:background="@color/bg_screen5"
+
         >
+
+        <ImageView
+
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="0dp"
+            android:scaleType="fitXY"
+            android:scaleY="1.5"
+            android:src="@drawable/offline1" />
 
         <ImageView
             android:id="@+id/img_profile"
             android:layout_width="150dp"
             android:layout_height="150dp"
-            android:layout_centerHorizontal="true"
+            android:layout_centerInParent="true"
             android:src="@drawable/btnbg1" />
 
+
+
     </RelativeLayout>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingLeft="@dimen/activity_horizontal_margin"
-            android:paddingTop="10dp"
-            android:text="@string/welcome"
-            android:textColor="#111"
-            android:textSize="16sp" />
+
 
     <TextView
         android:id="@+id/username_prof"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="66dp"
         android:layout_gravity="center"
         android:paddingLeft="@dimen/activity_horizontal_margin"
         android:paddingTop="10dp"
         android:text="@string/user_profile"
         android:textAlignment="center"
         android:textColor="#111"
-        android:textSize="16sp"
+        android:textSize="20sp"
         android:textStyle="bold" />
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/reg_btn_style"
+        android:text="Player Statistics"
+        android:textColor="@color/blanc"
+        android:textSize="30sp"
+        android:textAlignment="center"
+        />
+    <TextView
+        android:id="@+id/separateur4"
+        android:layout_width="match_parent"
+        android:layout_height="25dp"
+        android:background="@drawable/reg_edittext_style"
+        android:text="                             "
+        android:textAlignment="center"
+        android:textSize="48sp" />
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="304dp">
+
+        <LinearLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:weightSum="10">
+
+            <LinearLayout
+                android:id="@+id/stats"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="10">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="7"
+                    android:background="@drawable/reg_textview_style1"
+                    android:text="ENGLISH"
+                    android:textAlignment="center"
+                    android:textColor="@color/blanc"
+                    android:textSize="30sp" />
+
+                <TextView
+                    android:id="@+id/score_eng"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:background="@drawable/reg_textview_style2"
+                    android:text="scoreX"
+                    android:textAlignment="center"
+                    android:textColor="@color/blanc"
+                    android:textSize="30sp" />
+
+
+            </LinearLayout>
+
+            <TextView
+
+                android:layout_width="match_parent"
+                android:layout_height="25dp"
+                android:background="@drawable/reg_edittext_style"
+                android:text="                             "
+                android:textAlignment="center"
+                android:textSize="48sp" />
+
+            <LinearLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="10">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="7"
+                    android:background="@drawable/reg_textview_style1"
+                    android:text="FRENCH"
+                    android:textAlignment="center"
+                    android:textColor="@color/blanc"
+                    android:textSize="30sp" />
+
+                <TextView
+                    android:id="@+id/score_fr"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:background="@drawable/reg_textview_style2"
+                    android:text="scoreX"
+                    android:textAlignment="center"
+                    android:textColor="@color/blanc"
+                    android:textSize="30sp" />
+            </LinearLayout>
+
+            <TextView
+
+                android:layout_width="match_parent"
+                android:layout_height="25dp"
+                android:background="@drawable/reg_edittext_style"
+                android:text="                             "
+                android:textAlignment="center"
+                android:textSize="48sp" />
+
+            <LinearLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="10">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="7"
+                    android:background="@drawable/reg_textview_style1"
+                    android:text="SPANISH"
+                    android:textAlignment="center"
+                    android:textColor="@color/blanc"
+                    android:textSize="30sp" />
+
+                <TextView
+                    android:id="@+id/score_Sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:background="@drawable/reg_textview_style2"
+                    android:text="scoreX"
+                    android:textAlignment="center"
+                    android:textColor="@color/blanc"
+                    android:textSize="30sp" />
+            </LinearLayout>
+
+            <TextView
+
+                android:layout_width="match_parent"
+                android:layout_height="25dp"
+                android:background="@drawable/reg_edittext_style"
+                android:text="                             "
+                android:textAlignment="center"
+                android:textSize="48sp" />
+
+            <LinearLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="10">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="7"
+                    android:background="@drawable/reg_textview_style1"
+                    android:text="GERMAN"
+                    android:textAlignment="center"
+                    android:textColor="@color/blanc"
+                    android:textSize="30sp" />
+
+                <TextView
+                    android:id="@+id/score_Ger"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:background="@drawable/reg_textview_style2"
+                    android:text="scoreX"
+                    android:textAlignment="center"
+                    android:textColor="@color/blanc"
+                    android:textSize="30sp" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
 
 
 </LinearLayout>
+
+
+
 </android.support.v4.widget.NestedScrollView>
