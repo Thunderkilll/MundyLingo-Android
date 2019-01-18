@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -15,29 +14,33 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonObjectRequest;
+
+import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.dev.thunderkilll.mundylingo.AboutUs.AboutUsActivity;
+import com.dev.thunderkilll.mundylingo.Helpers.DatabaseHelper;
 import com.dev.thunderkilll.mundylingo.Models.User;
 import com.dev.thunderkilll.mundylingo.R;
 import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
-import com.facebook.FacebookSdk;
+import com.facebook.GraphRequest;
+import com.facebook.GraphResponse;
 import com.facebook.Profile;
-import com.facebook.appevents.AppEventsLogger;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
 
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Random;
 
-import static com.facebook.Profile.getCurrentProfile;
 /*
 
 made By Khaled and Raoudha
@@ -46,76 +49,99 @@ made By Khaled and Raoudha
 
 public class LoginActivity extends AppCompatActivity {
 
-    private Button button2;
+
     private static final String EMAIL = "email";
     private LoginButton loginButton;
-    private EditText username ;
-    private EditText password ;
-    public static Profile user ;
-   // private String url = "http://192.168.1.6/miniProjetWebService/Langue/user/addNewUser.php";
-    private String url = "http://192.168.1.6/miniProjetWebService/Langue/user/searchUser.php";
-    public static User currentUser ;
+    private Button about;
+    public static Profile user;
+    public static String IPadress = "http://192.168.1.6";
+    public String url = IPadress + "/miniProjetWebService/selectAjouUser.php?email=";
+    public String url2 = IPadress + "/miniProjetWebService/selectUser.php?email=";
+    public static User currentUser;
+    public DatabaseHelper Mydb;
+    private CallbackManager callbackManager;
 
-    private CallbackManager callbackManager ;
+    static String LinkUri = "";
+    static String image = "";
 
+
+    // Instance of Facebook Class
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//GONNA REPLACE ALL THIS BY A FACEBOOK BUTTON AND GMAIL BUTTON
-        //check status of the user if he is already connected once in this account
+        setContentView(R.layout.activity_login);
+        //initiate databse interne
+        Mydb = new DatabaseHelper(this);
+        about = findViewById(R.id.button4);
+        //TODO: go page about us
 
-       // String state = sharedPreferences.getString("etat" ,"");
-       // if(state.equals("connected")) {
+        about.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
-            setContentView(R.layout.activity_login);
-          //  sharedPreferences = getPreferences(MODE_PRIVATE);
-            username =  findViewById(R.id.log_username);
-            password =  findViewById(R.id.log_password);
+                Intent intent = new Intent(LoginActivity.this , AboutUsActivity.class);
+                startActivity(intent);
+            }
+        });
 
 
+        //  sharedPreferences = getPreferences(MODE _PRIVATE);
+        //   get access token from facebook
         AccessToken accessToken = AccessToken.getCurrentAccessToken();
         boolean isLoggedIn = accessToken != null && !accessToken.isExpired();
-Log.e("isLoggeIn", String.valueOf(isLoggedIn));
-
-if(isLoggedIn){
-//set the curent user
-     user = getCurrentProfile ();
-
-//current logged user is static
-    //  currentUser = new User( user.getName() , String.valueOf(user.getProfilePictureUri(75,75) ) ,"10","10","0", "0","1","1","1","1", String.valueOf(user.getId()));
+        Log.e("isLoggeIn", String.valueOf(isLoggedIn));
 
 
-    Intent intent = new Intent(this , MainActivity.class); // send me to the main activity activity
-    startActivity(intent);
-    Toast.makeText(LoginActivity.this ,"  Welcome "+ user.getName(),Toast.LENGTH_LONG).show();
+        if (isLoggedIn) { //if user connected with facebook
+            //set the curent user in database
 
-}
+
+            try {
+
+                currentUser = Mydb.searchUser();
+                Intent intent = new Intent(this, MainActivity.class); // send me to the main activity activity
+                startActivity(intent);
+                Toast.makeText(LoginActivity.this, "  Welcome " + currentUser.getUsername(), Toast.LENGTH_LONG).show();
+
+            } catch (Exception e) {
+                e.printStackTrace();
+                System.out.println("login without user info ");
+
+            }
+
+
+        }
+
 
 //callback register facebook
         callbackManager = CallbackManager.Factory.create();
-        loginButton =  findViewById(R.id.login_button);
-        loginButton.setReadPermissions(Arrays.asList(EMAIL));
+        loginButton = findViewById(R.id.login_button);
+        loginButton.setReadPermissions(Arrays.asList(EMAIL));//  a chercher
 
 
-
-
-     loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
+        loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
             @Override
             public void onSuccess(LoginResult loginResult) {
-                System.out.println("login successuful");
-                Intent intent = new Intent(LoginActivity.this , MainActivity.class); // send me to the main activity activity
-                startActivity(intent);
-                System.out.println(loginResult.getAccessToken());
-                System.out.println(loginResult.getRecentlyGrantedPermissions());
-              user = getCurrentProfile() ;
+                try {
 
-               // loginApp(user.getName() ,image , user.getId() );
+
+                    retrieveFbUserProfile(AccessToken.getCurrentAccessToken());
+
+                    Intent intent = new Intent(LoginActivity.this, MainActivity.class); // send me to the main activity activity
+                    startActivity(intent);
+                    System.out.println(loginResult.getAccessToken());
+                    System.out.println(loginResult.getRecentlyGrantedPermissions());
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    Log.e("try&catch user", "in login success ");
+                }
+
             }
 
             @Override
             public void onCancel() {
-                Log.d("canceled fb","login canceled");
+                Log.d("canceled fb", "login canceled");
 
             }
 
@@ -123,18 +149,57 @@ if(isLoggedIn){
             public void onError(FacebookException exception) {
                 exception.getCause().toString();
 
-                System.out.println("login error  "+exception.getMessage().toString());
-              Log.e("facebook",exception.getCause().toString());
+                System.out.println("login error  " + exception.getMessage().toString());
+                Log.e("facebook", exception.getCause().toString());
 
             }
         });
 
 
-
-
     }
 
+    //getting fb information
 
+    private void retrieveFbUserProfile(final AccessToken accessToken) {
+
+        GraphRequest request = GraphRequest.newMeRequest(
+                accessToken,
+                new GraphRequest.GraphJSONObjectCallback() {
+                    @Override
+                    public void onCompleted(JSONObject object, GraphResponse response) {
+                        if (object != null) {
+                            Log.d("logging", "onCompleted: " + object.toString());
+                            User user = new User();
+                            try {
+
+                                user.setUsername(object.getString("name"));
+                                user.setEmail(object.getString("email"));
+
+                                user.setImgUrl("https://graph.facebook.com/" + accessToken.getUserId() + "/picture");
+                                Log.d("logging", "onCompleted: user: " + user.toString());
+
+
+                                LinkUri = user.getEmail();
+                                image = user.getImgUrl();
+                                url += LinkUri;
+                                url += "&image=" + image;
+                                loginApp(LinkUri, image);
+                                user.setImgUrl("https://graph.facebook.com/" + accessToken.getUserId() + "/picture?height=600");
+                                checkUser(user);
+
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                                // hideProgressBar();
+                                //showErrorAlert();
+                            }
+                        }
+                    }
+                });
+        Bundle parameters = new Bundle();
+        parameters.putString("fields", "id,name,email,picture");
+        request.setParameters(parameters);
+        request.executeAsync();
+    }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -142,64 +207,101 @@ if(isLoggedIn){
         super.onActivityResult(requestCode, resultCode, data);
     }
 
+    public void checkUser(final User user) {
+        url2 += user.getEmail();
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(url2, new Response.Listener<JSONArray>() {
+            @Override
+            public void onResponse(JSONArray jsonArray) {
 
-//login the application
-    public void LogIn(View view) {
+                try {
 
-        currentUser = new User( "Khaled Guesmi" ,
-                "https://graph.facebook.com/v3.2/10212541082352959/picture?height=150&width=150&migration_overrides=%7Boctober_2012%3Atrue%7D" ,
-                "10","10","0",
-                "0","1","1",
-                "1","1", String.valueOf(randomId(0,10000000 )) );
 
-        Intent intent = new Intent(this , MainActivity.class); // send me to the main activity activity
+                    JSONObject jObj = jsonArray.getJSONObject(0);
+
+                    user.setLevelFr(jObj.getString("levelFr"));
+                    user.setLevelEng(jObj.getString("levelAng"));
+                    user.setLevelSpan(jObj.getString("levelEsp"));
+                    user.setLevelGer(jObj.getString("levelGer"));
+                    user.setScoreFr(jObj.getString("scoreF"));
+                    user.setScoreEng(jObj.getString("scoreAng"));
+                    user.setScoreSpan(jObj.getString("scoreEsp"));
+                    user.setScoreGer(jObj.getString("scoreGerm"));
+                    System.out.println();
+                    System.out.println();
+                    System.out.println();
+                    currentUser = user;
+                    System.out.println("getting levels and scores :  " + currentUser);
+                    System.out.println();
+                    System.out.println();
+                    Mydb.InsertUserData(currentUser);
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError volleyError) {
+
+            }
+        });
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        requestQueue.add(jsonArrayRequest);
+
+
+    }
+
+    //login the application
+    public void Offline_LogIn(View view) {
+        //login offline
+        User u = new User("testUser", "Test Image", "10", "200", "35", "25", "2", "2", "5", "1", "86589859");
+        Mydb.InsertUserData(u);
+        //make an offline views
+        Intent intent = new Intent(this, CoursPrefActivity.class); // send me to the main activity activity
         startActivity(intent);
 
 
     }
 
 
-
-
-
-
-
-
-
-
 //register a new account in the application
 
 
-    public void  loginApp(String usernamedb , String imageUri , String idFacebook ){
+    public void loginApp(final String strig, final String image) {
 
-        url += "?username="+usernamedb+"&image="+imageUri+"&idFG="+idFacebook;
-
-
+        System.out.println();
+        System.out.println("this is url login");
 
         StringRequest sr = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-                Log.d("post response ",response);
-                //JSONObject jsonObject = new JSONObject(response);
-                Log.e("post : response object " ,response);
-                Toast.makeText(LoginActivity.this, "inside try and catch", Toast.LENGTH_LONG).show();
+                Log.d("post response ", response);
+                System.out.println();
+                System.out.println();
+
+                Log.e("post : response object ", response);
+
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
+                Log.e("volley insert  ", error.getCause().toString());
                 Toast.makeText(LoginActivity.this, "error someweher in the request", Toast.LENGTH_LONG).show();
+
             }
         }) {
+
+
             @Override
             public byte[] getBody() throws AuthFailureError {
                 HashMap<String, String> params2 = new HashMap<String, String>();
-                // params2.put("id_user", Integer.toString(id));
-                //params2.put("id_cause", Integer.toString(c1.getId()));
-                params2.put("username",username.getText().toString());
-                params2.put("image",password.getText().toString());
-                params2.put("idFG",String.valueOf(randomId(0,100000)));
+                params2.put("email", strig);
+                params2.put("image", image);
+
                 return new JSONObject(params2).toString().getBytes();
             }
+
             @Override
             public String getBodyContentType() {
                 return "application/json";
@@ -212,11 +314,12 @@ if(isLoggedIn){
         requestQueue.add(sr);
     }
 
-public int randomId(int min , int max ){
 
-    Random r = new Random();
-    int i = r.nextInt(max-min +1)+min ;
-        return i ;
-}
+    public int randomId(int min, int max) {
+
+        Random r = new Random();
+        int i = r.nextInt(max - min + 1) + min;
+        return i;
+    }
 
 }

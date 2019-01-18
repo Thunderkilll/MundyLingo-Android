@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -21,6 +22,7 @@ import com.android.volley.toolbox.Volley;
 import com.bumptech.glide.Glide;
 import com.dev.thunderkilll.mundylingo.Models.Langue;
 import com.dev.thunderkilll.mundylingo.R;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -28,25 +30,26 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.dev.thunderkilll.mundylingo.Activities.LoginActivity.IPadress;
+
 public class DashboardFragment extends Fragment {
 
     private List<Langue> itemsList;
-    private  LangueAdapter mAdapter;
+    private LangueAdapter mAdapter;
 
-    private static final String URLi = "http://192.168.1.6/miniProjetWebService/Langue/selectAllLangues.php";
+    private static final String URLi = IPadress + "/miniProjetWebService/Langue/selectAllLangues.php";
     private static final String TAGDash = DashboardFragment.class.getSimpleName();
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-      View view = inflater.inflate(R.layout.fragment_dashboard, container , false);
+        View view = inflater.inflate(R.layout.fragment_dashboard, container, false);
         itemsList = new ArrayList<>();
         mAdapter = new LangueAdapter(getActivity(), itemsList);
         getData(view);
 
-      return view ;
+        return view;
     }
-
 
 
     public void getData(View view) {
@@ -55,7 +58,7 @@ public class DashboardFragment extends Fragment {
         progressDialog.show();
 
 
-        JsonArrayRequest jsonArrayRequest = new  JsonArrayRequest(URLi, new Response.Listener<JSONArray>() {
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(URLi, new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray jsonArray) {
                 Log.e("index>>>>>>", jsonArray.toString());
@@ -64,20 +67,20 @@ public class DashboardFragment extends Fragment {
                 try {
 
 
-                    for (int i = 0 ; i<jsonArray.length() ; i++) {
+                    for (int i = 0; i < jsonArray.length(); i++) {
 
                         JSONObject jObj = jsonArray.getJSONObject(i);
-                        
-                        Langue langue = new Langue( jObj.getString("title"),  jObj.getString("imgUrl"), String.valueOf(jObj.getInt("score")));
-                        Log.d("affichage",jObj.getString("title"));
+
+                        Langue langue = new Langue(jObj.getString("title"), jObj.getString("imgUrl"), String.valueOf(jObj.getInt("score")));
+                        Log.d("affichage", jObj.getString("title"));
 
                         System.out.println(langue.toString());
 
                         itemsList.add(langue);
-                          }
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
 
                 mAdapter = new LangueAdapter(getActivity(), itemsList);
 
@@ -95,22 +98,21 @@ public class DashboardFragment extends Fragment {
     }
 
 
-
-
 }
+
 class LangueAdapter extends RecyclerView.Adapter<LangueAdapter.MyViewHolder> {
     private Context context;
     private List<Langue> langueList;
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        public TextView name ;
+        public TextView name;
         public ImageView thumbnail;
-        public TextView score ;
+
 
         public MyViewHolder(View view) {
             super(view);
             name = view.findViewById(R.id.title);
-            score = view.findViewById(R.id.score);
+
             thumbnail = view.findViewById(R.id.thumbnail);
         }
     }
@@ -133,7 +135,7 @@ class LangueAdapter extends RecyclerView.Adapter<LangueAdapter.MyViewHolder> {
     public void onBindViewHolder(MyViewHolder holder, final int position) {
         final Langue lg = langueList.get(position);
         holder.name.setText(lg.getTitle());
-        holder.score.setText(lg.getScore());
+
 
         Glide.with(context)
                 .load(lg.getImage())

@@ -72,13 +72,22 @@ public class Cour {
     }
 
     //constructeurs pour les grammaires kahaw
-    public Cour(String langue, String idLevel, String grammaire) {
+    public Cour(String id , String langue, String idLevel, String grammaire) {
+        this.id = id;
         this.langue = langue;
         this.idLevel = idLevel;
         this.grammaire = grammaire;
     }
+    public Cour(String id,   String grammaire, String conjugaison, String orthographe, String langue) {
+        this.id = id;
+        this.grammaire = grammaire;
+        this.conjugaison = conjugaison;
+        this.orthographe = orthographe;
+        this.langue = langue;
+    }
 
-//constructeur vide
+
+    //constructeur vide
     public Cour() {
     }
     //toString()

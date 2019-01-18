@@ -42,13 +42,13 @@ public class SplashScreen extends AppCompatActivity {
         private void StartAnimations() {
             Animation anim = AnimationUtils.loadAnimation(this, R.anim.alpha);
             anim.reset();
-            LinearLayout l = (LinearLayout) findViewById(R.id.lin_lay);
+            LinearLayout l =   findViewById(R.id.lin_lay);
             l.clearAnimation();
             l.startAnimation(anim);
 
             anim = AnimationUtils.loadAnimation(this, R.anim.translate);
             anim.reset();
-            ImageView iv = (ImageView) findViewById(R.id.splash);
+            ImageView iv =  findViewById(R.id.splash);
             iv.clearAnimation();
             iv.startAnimation(anim);
 
@@ -63,7 +63,7 @@ public class SplashScreen extends AppCompatActivity {
                             waited += 100;
                         }
                         Intent intent = new Intent(SplashScreen.this,
-                                LoginActivity.class);//LoginActivity.class MapLanguageActivity
+                                WelcomeActivity.class);//LoginActivity.class CoursEnglishActivity
                         intent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                         startActivity(intent);
                         SplashScreen.this.finish();

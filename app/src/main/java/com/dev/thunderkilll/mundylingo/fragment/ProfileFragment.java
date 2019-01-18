@@ -1,6 +1,8 @@
 package com.dev.thunderkilll.mundylingo.fragment;
 
 import android.content.Context;
+import android.database.Cursor;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -13,6 +15,8 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
+import com.dev.thunderkilll.mundylingo.Helpers.DatabaseHelper;
+import com.dev.thunderkilll.mundylingo.Models.User;
 import com.dev.thunderkilll.mundylingo.R;
 
 import static com.dev.thunderkilll.mundylingo.Activities.LoginActivity.currentUser;
@@ -30,7 +34,9 @@ public class ProfileFragment extends Fragment {
     private String mParam2;
     private ImageView thumbnail;
     private Context context;
-    private TextView username_prof ;
+    private TextView username_prof, score_eng, score_fr, score_Sp, score_Ger;
+    DatabaseHelper Mydb;
+    Typeface OrangeJuce, AgentOrange;
 
 
     public ProfileFragment() {
@@ -60,21 +66,65 @@ public class ProfileFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-       View view =  inflater.inflate(R.layout.fragment_profile, container, false);
-       thumbnail = view.findViewById(R.id.img_profile);
+        View view = inflater.inflate(R.layout.fragment_profile, container, false);
+        thumbnail = view.findViewById(R.id.img_profile);
         username_prof = view.findViewById(R.id.username_prof);
-     //Uri uriImg = user.getProfilePictureUri(75,75);
-      //Log.e("facebook : image" , String.valueOf(uriImg));
-        //"http://192.168.1.8/miniProjetRessources/englishflag.jpg"
-  String imgTest = "https://graph.facebook.com/v3.2/10212541082352959/picture?height=150&width=150&migration_overrides=%7Boctober_2012%3Atrue%7D";
+        score_eng = view.findViewById(R.id.score_eng);
+        score_fr = view.findViewById(R.id.score_fr);
+        score_Sp = view.findViewById(R.id.score_Sp);
+        score_Ger = view.findViewById(R.id.score_Ger);
+        AgentOrange = Typeface.createFromAsset(getActivity().getAssets(), "fonts/AgentOrange.ttf");
+        OrangeJuce = Typeface.createFromAsset(getActivity().getAssets(), "fonts/orange juice 2.0.ttf");
+
+        //considering the that the user can login when he is ofline so i decided to add the user ifo in sqlite and get the stored info
+        Mydb = new DatabaseHelper(view.getContext());
+
+        User u = new User();
+        Cursor c = Mydb.getAllusers();
+        if (c.moveToLast()) {
+            u.setUsername(c.getString(1));
+            u.setEmail(c.getString(1));
+            u.setImgUrl(c.getString(2));
+            u.setScoreEng(c.getString(3));
+            u.setScoreFr(c.getString(4));
+            u.setScoreSpan(c.getString(5));
+            u.setScoreGer(c.getString(6));
+            u.setLevelFr(c.getString(7));
+            u.setLevelEng(c.getString(8));
+            u.setLevelSpan(c.getString(9));
+            u.setLevelGer(c.getString(10));
+
+        }
+        System.out.println("   ");
+        System.out.println("   ");
+        System.out.println("   ");
+        System.out.println(u.toString());
+        System.out.println("   ");
+        System.out.println("   ");
+        System.out.println("   ");
+
         Glide.with(view.getContext())
-                .load(currentUser.getImgUrl())
+                .load(u.getImgUrl())
                 .apply(RequestOptions.circleCropTransform())
                 .into(thumbnail);
 
         //username_prof.setText(user.getName());
-     username_prof.setText(currentUser.getUsername());
-        return view ;
+        username_prof.setText(u.getUsername());
+        username_prof.setTypeface(AgentOrange);
+        score_eng.setText(u.getScoreEng());
+        score_eng.setTypeface(OrangeJuce);
+        score_fr.setText(u.getScoreFr());
+        score_fr.setTypeface(OrangeJuce);
+        score_Sp.setText(u.getScoreSpan());
+        score_Sp.setTypeface(OrangeJuce);
+        score_Ger.setText(u.getScoreGer());
+        score_Ger.setTypeface(OrangeJuce);
+
+        /*
+        other methode
+         */
+
+        return view;
     }
 
 

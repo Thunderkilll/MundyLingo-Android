@@ -15,16 +15,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.dev.thunderkilll.mundylingo.Activities.MapFr;
-import com.dev.thunderkilll.mundylingo.Activities.MapLanguageActivity;
-import com.dev.thunderkilll.mundylingo.Activities.MapSP;
+import com.dev.thunderkilll.mundylingo.Activities.CoursEnglishActivity;
+import com.dev.thunderkilll.mundylingo.Activities.CoursFrançais;
+import com.dev.thunderkilll.mundylingo.Activities.CoursGermanActivity;
+import com.dev.thunderkilll.mundylingo.Activities.CoursSpanish;
 import com.dev.thunderkilll.mundylingo.Helpers.RecyclerTouchListener;
 import com.dev.thunderkilll.mundylingo.Models.Langue;
 import com.dev.thunderkilll.mundylingo.R;
-
 import java.util.ArrayList;
 import java.util.List;
-
+import static com.dev.thunderkilll.mundylingo.Activities.LoginActivity.IPadress;
 import static com.dev.thunderkilll.mundylingo.Activities.LoginActivity.currentUser;
 
 
@@ -33,7 +33,7 @@ public class HomeFragment extends Fragment {
 
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-    private static final String URLi = "http://192.168.1.6/miniProjetWebService/Langue/selectAllLangues.php";
+    private static final String URLi = IPadress+"/miniProjetWebService/Langue/selectAllLangues.php";
     private static final String TAG = HomeFragment.class.getSimpleName();
 
     // TODO: Rename and change types of parameters
@@ -103,25 +103,25 @@ public class HomeFragment extends Fragment {
                   //les conditions bech najim nit3adda lil les maps
                 if (langue.getTitle().equals("english")) {
                     //>>redirect to game map of english
-                    Intent intent = new Intent(getContext(), MapLanguageActivity.class);
+                    Intent intent = new Intent(getContext(), CoursEnglishActivity.class);
                     getActivity().startActivity(intent);
 
                 }
                 if (langue.getTitle().equals("french")) {
                     //>>redirect to french map
-                    Intent intent = new Intent(getContext(), MapFr.class);
+                    Intent intent = new Intent(getContext(), CoursFrançais.class);
                     getActivity().startActivity(intent);
 
                 }
                 if (langue.getTitle().equals("spanish")) {
                     //>>redirect to spanish map
-                    Intent intent = new Intent(getContext(), MapSP.class);
+                    Intent intent = new Intent(getContext(), CoursSpanish.class);
                     getActivity().startActivity(intent);
 
                 }
                 if (langue.getTitle().equals("german")) {
                     // >>redirect to spanish map
-                    Intent intent = new Intent(getContext(), MapLanguageActivity.class);
+                    Intent intent = new Intent(getContext(), CoursGermanActivity.class);
                     getActivity().startActivity(intent);
 
                 }
@@ -140,14 +140,14 @@ public class HomeFragment extends Fragment {
 
 
     private void prepareMovieData() {
-     Langue langue = new Langue("english" ,"http://192.168.1.6/miniProjetRessources/englishflag.jpg",currentUser.getScoreEng());
+     Langue langue = new Langue("english" ,IPadress+"/miniProjetRessources/englishflag.jpg","");
      itemsList.add(langue);
 
-         langue = new Langue("french" ,"http://192.168.1.6/miniProjetRessources/french_flag.jpg",currentUser.getScoreFr());
+         langue = new Langue("french" ,IPadress+"/miniProjetRessources/french_flag.jpg","");
         itemsList.add(langue);
-        langue = new Langue("spanish" ,"http://192.168.1.6/miniProjetRessources/spanishflag.jpg",currentUser.getScoreSpan());
+        langue = new Langue("spanish" ,IPadress+"/miniProjetRessources/spanishflag.jpg","");
         itemsList.add(langue);
-        langue = new Langue("german" ,"http://192.168.1.6/miniProjetRessources/germanflag.jpg",currentUser.getScoreGer());
+        langue = new Langue("german" ,IPadress+"/miniProjetRessources/germanflag.jpg","");
         itemsList.add(langue);
 
         // notify adapter about data set changes

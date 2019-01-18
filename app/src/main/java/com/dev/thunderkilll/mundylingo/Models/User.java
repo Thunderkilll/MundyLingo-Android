@@ -14,11 +14,20 @@ public class User {
     private String levelEng;
     private String levelFr;
     private String idFG;
+    private String email ;
 
 
 
     public String getImgUrl() {
         return imgUrl;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public void setImgUrl(String imgUrl) {
@@ -127,5 +136,48 @@ public class User {
         this.levelEng = levelEng;
         this.levelFr = levelFr;
         this.idFG = idFG;
+    }
+
+    public User(String username, String imgUrl, String scoreEng) {
+        this.username = username;
+        this.imgUrl = imgUrl;
+        this.scoreEng = scoreEng;
+    }
+    public User(String username, String imgUrl, String scoreEng , String email) {
+        this.username = username;
+        this.imgUrl = imgUrl;
+        this.scoreEng = scoreEng;
+        this.email = email ;
+    }
+
+    public User(String username, String imgUrl, String scoreFr, String scoreEng, String scoreSpan, String scoreGer, String levelGer, String levelSpan, String levelEng, String levelFr ) {
+        this.username = username;
+        this.imgUrl = imgUrl;
+        this.scoreFr = scoreFr;
+        this.scoreEng = scoreEng;
+        this.scoreSpan = scoreSpan;
+        this.scoreGer = scoreGer;
+        this.levelGer = levelGer;
+        this.levelSpan = levelSpan;
+        this.levelEng = levelEng;
+        this.levelFr = levelFr;
+
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "username='" + username + '\'' +
+                ", imgUrl='" + imgUrl + '\'' +
+                ", scoreFr='" + scoreFr + '\'' +
+                ", scoreEng='" + scoreEng + '\'' +
+                ", scoreSpan='" + scoreSpan + '\'' +
+                ", scoreGer='" + scoreGer + '\'' +
+                ", levelGer='" + levelGer + '\'' +
+                ", levelSpan='" + levelSpan + '\'' +
+                ", levelEng='" + levelEng + '\'' +
+                ", levelFr='" + levelFr + '\'' +
+                ", email='" + email + '\'' +
+                '}';
     }
 }
