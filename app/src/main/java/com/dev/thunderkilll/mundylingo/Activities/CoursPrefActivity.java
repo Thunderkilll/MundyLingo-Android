@@ -11,7 +11,6 @@ import android.support.v7.widget.RecyclerView;
 import android.util.TypedValue;
 import android.view.View;
 
-import com.dev.thunderkilll.mundylingo.Adapters.CoursAdapter;
 import com.dev.thunderkilll.mundylingo.Adapters.SavedCoursAdapters;
 import com.dev.thunderkilll.mundylingo.Helpers.DatabaseHelper;
 import com.dev.thunderkilll.mundylingo.Models.Cour;
@@ -46,6 +45,7 @@ public class CoursPrefActivity extends AppCompatActivity {
             nc.setConjugaison(c.getString(2));
             nc.setOrthographe(c.getString(3));
             nc.setLangue(c.getString(4));
+            nc.setId(c.getString(5));
 
         courList.add(nc);
 

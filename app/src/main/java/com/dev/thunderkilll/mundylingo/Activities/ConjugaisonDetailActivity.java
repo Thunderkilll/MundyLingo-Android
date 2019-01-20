@@ -110,28 +110,44 @@ public class ConjugaisonDetailActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                String text = "Grammar : \n" + selectedCour.getGrammaire() + "Conjugation :\n" + selectedCour.getConjugaison() + "Spelling :\n " + selectedCour.getOrthographe();
+
                 if (selectedCour.getLangue().equals("1")) {
-                    boolean state = false;
-                    state = Mydb.InsertCour(selectedCour.getLangue(), selectedCour.getGrammaire(), selectedCour.getConjugaison(), selectedCour.getOrthographe());
-                    System.out.println("the state of the added cours if true => saved else not saved " + state);
-                    Snackbar.make(view, "add cour to DB", Snackbar.LENGTH_LONG)
-                            .setAction("Action", null).show();
+                    boolean state;
+                    state = Mydb.InsertCour(selectedCour.getLangue(), selectedCour.getGrammaire(), selectedCour.getConjugaison(), selectedCour.getOrthographe(), selectedCour.getId());
+                    if (state)
+                             Snackbar.make(view, "add cour to DB", Snackbar.LENGTH_LONG)
+                                         .setAction("Action", null).show();
+                    else
+                        Snackbar.make(view, "cours already exists or something went wrong", Snackbar.LENGTH_LONG)
+                                .setAction("Action", null).show();
                 } else if (selectedCour.getLangue().equals("2")) {
 
-                    Mydb.InsertCour(selectedCour.getLangue(), selectedCour.getGrammaire(), selectedCour.getConjugaison(), selectedCour.getOrthographe());
-                    Snackbar.make(view, "add cour to DB", Snackbar.LENGTH_LONG)
-                            .setAction("Action", null).show();
-
+                    boolean state = false;
+                    state = Mydb.InsertCour(selectedCour.getLangue(), selectedCour.getGrammaire(), selectedCour.getConjugaison(), selectedCour.getOrthographe(), selectedCour.getId());
+                    if (state)
+                        Snackbar.make(view, "add cour to DB", Snackbar.LENGTH_LONG)
+                                .setAction("Action", null).show();
+                    else
+                        Snackbar.make(view, "cours already exists or something went wrong", Snackbar.LENGTH_LONG)
+                                .setAction("Action", null).show();
                 } else if (selectedCour.getLangue().equals("3")) {
-                    Mydb.InsertCour(selectedCour.getLangue(), selectedCour.getGrammaire(), selectedCour.getConjugaison(), selectedCour.getOrthographe());
-                    Snackbar.make(view, "add cour to DB", Snackbar.LENGTH_LONG)
-                            .setAction("Action", null).show();
+                    boolean state = false;
+                    state = Mydb.InsertCour(selectedCour.getLangue(), selectedCour.getGrammaire(), selectedCour.getConjugaison(), selectedCour.getOrthographe(), selectedCour.getId());
+                    if (state)
+                        Snackbar.make(view, "add cour to DB", Snackbar.LENGTH_LONG)
+                                .setAction("Action", null).show();
+                    else
+                        Snackbar.make(view, "cours already exists or something went wrong", Snackbar.LENGTH_LONG)
+                                .setAction("Action", null).show();
                 } else if (selectedCour.getLangue().equals("4")) {
-
-                    Mydb.InsertCour(selectedCour.getLangue(), selectedCour.getGrammaire(), selectedCour.getConjugaison(), selectedCour.getOrthographe());
-                    Snackbar.make(view, "add cour to DB", Snackbar.LENGTH_LONG)
-                            .setAction("Action", null).show();
+                    boolean state = false;
+                    state = Mydb.InsertCour(selectedCour.getLangue(), selectedCour.getGrammaire(), selectedCour.getConjugaison(), selectedCour.getOrthographe(), selectedCour.getId());
+                    if (state)
+                        Snackbar.make(view, "add cour to DB", Snackbar.LENGTH_LONG)
+                                .setAction("Action", null).show();
+                    else
+                        Snackbar.make(view, "cours already exists or something went wrong", Snackbar.LENGTH_LONG)
+                                .setAction("Action", null).show();
                 } else {
                     Log.e("save", "couldn't save ");
                 }

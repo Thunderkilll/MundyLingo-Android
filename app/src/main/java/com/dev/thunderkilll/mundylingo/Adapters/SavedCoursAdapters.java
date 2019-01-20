@@ -16,7 +16,7 @@ import com.dev.thunderkilll.mundylingo.R;
 import java.util.List;
 
 import static com.dev.thunderkilll.mundylingo.Activities.LoginActivity.IPadress;
-import static com.dev.thunderkilll.mundylingo.Activities.LoginActivity.currentUser;
+
 
 public class SavedCoursAdapters extends RecyclerView.Adapter<SavedCoursAdapters.MyViewHolders>{
 
@@ -123,6 +123,5 @@ public class MyViewHolders extends RecyclerView.ViewHolder {
         Log.d("list size", String.valueOf(itemcourList.size()));
         return itemcourList.size();
     }
-
 
 }

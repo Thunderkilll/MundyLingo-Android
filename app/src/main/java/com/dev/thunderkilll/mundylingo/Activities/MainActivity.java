@@ -1,5 +1,6 @@
 package com.dev.thunderkilll.mundylingo.Activities;
 
+import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,9 +9,13 @@ import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.view.menu.MenuBuilder;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -38,6 +43,7 @@ import static com.dev.thunderkilll.mundylingo.Activities.LoginActivity.IPadress;
 
 public class MainActivity extends AppCompatActivity {
     private Toolbar toolbar;
+    Menu menu ;
     public static List<User> UseritemsList;
     public static List<User> UseritemsListFr;
     public static List<User> UseritemsListSp;
@@ -138,12 +144,14 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    @SuppressLint("RestrictedApi")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_main);
         toolbar = findViewById(R.id.toolbar); //to set each fragment title
+        menu = findViewById(R.id.side_menu);
         BottomNavigationView navigation = findViewById(R.id.navigation); //to navigate to each fragment i nead a ref for the nav bottom view
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
@@ -169,9 +177,10 @@ public class MainActivity extends AppCompatActivity {
         m2Adapter = new CoursAdapter(this, courList);
 
         // load the home fragment  :   fragment by default
+
         toolbar.setTitle("Home");
         loadFragment(new HomeFragment());
-
+        setSupportActionBar(toolbar);
 
 
     }
@@ -453,5 +462,33 @@ public class MainActivity extends AppCompatActivity {
         requestQueue.add(jsonArrayRequest);
     }
 
+//todo: add menu
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu  ) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.side_menu , menu);
+        return true;
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.side_fav:
+            {
+                Intent intent = new Intent(MainActivity.this, CoursPrefActivity.class);
+               startActivity(intent);
+            }
+
+            case R.id.side_settings:
+                Toast.makeText(MainActivity.this ,"option 2",Toast.LENGTH_SHORT).show();
+
+            case  R.id.side_logout:
+                Toast.makeText(MainActivity.this ,"option 3",Toast.LENGTH_SHORT).show();
+
+
+
+        }
+        return true ;
+    }
 
 }
