@@ -18,12 +18,13 @@
         android:text="saved cours"
         android:textColor="#111"
         android:textSize="16sp" />
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/recycler_view_pref"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:clipToPadding="false"
-        android:scrollbars="vertical" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recycler_view_pref"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipToPadding="false"
+            android:scrollbars="vertical" />
 
     </LinearLayout>
 

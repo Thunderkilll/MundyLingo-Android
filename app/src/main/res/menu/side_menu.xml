@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/side_menu"
+    tools:context=".Activities.MainActivity">
+
+    <item
+        android:id="@+id/side_fav"
+        android:icon="@drawable/ic_store_white_24dp"
+        android:iconTint="@color/black"
+        android:title="fav" />
+    <item
+        android:id="@+id/side_settings"
+        android:icon="@drawable/ic_store_white_24dp"
+        android:iconTint="@color/black"
+        android:title="settings" />
+    <item
+        android:id="@+id/side_logout"
+        android:icon="@android:drawable/ic_lock_idle_charging"
+        android:iconTint="@color/black"
+        android:title="logout" />
+</menu>

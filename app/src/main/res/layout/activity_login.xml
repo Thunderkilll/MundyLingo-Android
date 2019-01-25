@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/goodred"
-    tools:context=".Activities.LoginActivity">
+    tools:context=".Activities.LoginActivity"
+    android:id="@+id/login_actv">
 
     <Button
         android:id="@+id/button2"
@@ -71,7 +72,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/logoImgV"
         android:layout_width="362dp"
         android:layout_height="238dp"
         android:layout_marginStart="8dp"

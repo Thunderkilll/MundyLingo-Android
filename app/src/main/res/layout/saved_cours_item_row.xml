@@ -7,13 +7,14 @@
     <android.support.v7.widget.CardView
         android:id="@+id/card_view_Savedcours"
         android:layout_width="match_parent"
-        android:layout_height="213dp"
+        android:layout_height="190dp"
         android:layout_gravity="center"
         android:layout_margin="@dimen/card_margin"
         android:clickable="true"
         android:elevation="3dp"
         android:foreground="?attr/selectableItemBackground"
-        card_view:cardCornerRadius="@dimen/card_album_radius">
+        card_view:cardCornerRadius="@dimen/card_album_radius"
+        android:focusable="true">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -21,22 +22,28 @@
 
             <ImageView
                 android:id="@+id/thumbnail_Scours"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/card_cover_height"
-                android:layout_above="@+id/id_langue_Scour"
-                android:layout_marginBottom="30dp"
+                android:layout_width="105dp"
+                android:layout_height="105dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginStart="3dp"
+
+                android:layout_marginBottom="18dp"
                 android:background="?attr/selectableItemBackgroundBorderless"
                 android:clickable="true"
                 android:scaleType="fitXY"
-                android:src="@drawable/img2" />
+                android:src="@drawable/reg_textview_style1"
+                android:focusable="true"
+                android:contentDescription="language image" />
 
 
             <TextView
                 android:id="@+id/Stitle_cours"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="56dp"
                 android:layout_below="@id/thumbnail"
                 android:layout_alignParentStart="true"
+                android:layout_marginStart="0dp"
                 android:background="#c6000000"
                 android:lines="2"
                 android:paddingLeft="@dimen/card_title_padding"
@@ -50,18 +57,31 @@
 
             <TextView
                 android:id="@+id/id_langue_Scour"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_width="229dp"
+                android:layout_height="47dp"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentBottom="true"
-                android:layout_marginStart="0dp"
-                android:layout_marginBottom="11dp"
+                android:layout_marginStart="110dp"
+                android:layout_marginBottom="46dp"
                 android:gravity="right"
                 android:paddingBottom="@dimen/card_price_padding_bottom"
                 android:text="English"
                 android:textAlignment="center"
                 android:textColor="@color/colorAccent"
                 android:textSize="20sp" />
+
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginTop="106dp"
+                android:layout_marginEnd="6dp"
+                android:layout_marginBottom="49dp"
+                android:contentDescription="see information"
+                card_view:srcCompat="@drawable/ic_info_outline_black_24dp" />
 
 
         </RelativeLayout>
