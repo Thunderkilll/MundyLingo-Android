@@ -12,6 +12,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".Activities.CourDetailsActivity"></activity>
         <activity
             android:name=".Activities.LoginActivity"
             android:screenOrientation="portrait" />
@@ -75,7 +76,7 @@
             android:screenOrientation="portrait" />
         <activity android:name=".Activities.CoursGermanActivity" />
         <activity android:name=".Activities.CoursPrefActivity" />
-        <activity android:name=".AboutUs.AboutUsActivity"></activity>
+        <activity android:name=".AboutUs.AboutUsActivity" />
     </application>
 
 </manifest>
