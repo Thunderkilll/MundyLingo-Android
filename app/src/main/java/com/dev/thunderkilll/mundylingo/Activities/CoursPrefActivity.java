@@ -1,5 +1,6 @@
 package com.dev.thunderkilll.mundylingo.Activities;
 
+import android.content.Intent;
 import android.content.res.Resources;
 import android.database.Cursor;
 import android.graphics.Rect;
@@ -11,6 +12,7 @@ import android.support.v7.widget.RecyclerView;
 import android.util.TypedValue;
 import android.view.View;
 import android.widget.TextView;
+
 
 import com.dev.thunderkilll.mundylingo.Adapters.SavedCoursAdapters;
 import com.dev.thunderkilll.mundylingo.Helpers.DatabaseHelper;
@@ -25,20 +27,21 @@ public class CoursPrefActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private SavedCoursAdapters mAdapter;
     private List<Cour> courList;
-    DatabaseHelper Mydb ;
+    DatabaseHelper Mydb;
+    private boolean mIsOnline = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cours_pref);
-        Mydb =  new DatabaseHelper(this);
+        Mydb = new DatabaseHelper(this);
         recyclerView = findViewById(R.id.recycler_view_pref);
         courList = new ArrayList<>();
-   //remplir la liste
+        //remplir la liste
 
         Cursor c = Mydb.getAllCours();
-       while(c.moveToNext()){
-           Cour  nc = new Cour();
+        while (c.moveToNext()) {
+            Cour nc = new Cour();
             nc.setId(String.valueOf(c.getInt(0)));
             nc.setGrammaire(c.getString(1));
             nc.setConjugaison(c.getString(2));
@@ -46,25 +49,23 @@ public class CoursPrefActivity extends AppCompatActivity {
             nc.setLangue(c.getString(4));
             nc.setId(c.getString(5));
 
-        courList.add(nc);
+            courList.add(nc);
 
         }
-        System.out.println("this is list cours size"+courList.size());
-         for (int i =0 ; i<courList.size() ; i++){
-             System.out.println(courList.get(i).getLangue());
-         }
-        mAdapter = new SavedCoursAdapters (this, courList);
+        System.out.println("this is list cours size" + courList.size());
+        for (int i = 0; i < courList.size(); i++) {
+            System.out.println(courList.get(i).getLangue());
+        }
+        mAdapter = new SavedCoursAdapters(this, courList);
         RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(this, 1);
 
         recyclerView.setLayoutManager(mLayoutManager);
-        recyclerView.addItemDecoration(new  GridSpacingItemDecoration(2, dpToPx(8), true));
+        recyclerView.addItemDecoration(new GridSpacingItemDecoration(2, dpToPx(8), true));
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(mAdapter);
 
 
-
     }
-
 
 
     private int dpToPx(int dp) {
@@ -109,7 +110,6 @@ public class CoursPrefActivity extends AppCompatActivity {
         }
     }
 
-    private boolean mIsOnline = true;
 
     @Override
     protected void onResume() {
@@ -122,9 +122,10 @@ public class CoursPrefActivity extends AppCompatActivity {
                 mIsOnline = internet;
 
                 if (internet) {
-                    getSupportActionBar().show();
+                    Intent i = new Intent(CoursPrefActivity.this, LoginActivity.class);
+                    startActivity(i);
                 } else {
-                    getSupportActionBar().hide();
+//stay here
                 }
             }
         });
@@ -143,7 +144,6 @@ public class CoursPrefActivity extends AppCompatActivity {
         super.onPause();
 
     }
-
 
 
 }
