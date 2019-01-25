@@ -10,9 +10,11 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.TypedValue;
 import android.view.View;
+import android.widget.TextView;
 
 import com.dev.thunderkilll.mundylingo.Adapters.SavedCoursAdapters;
 import com.dev.thunderkilll.mundylingo.Helpers.DatabaseHelper;
+import com.dev.thunderkilll.mundylingo.Helpers.InternetConnectivityObserver;
 import com.dev.thunderkilll.mundylingo.Models.Cour;
 import com.dev.thunderkilll.mundylingo.R;
 
@@ -107,9 +109,40 @@ public class CoursPrefActivity extends AppCompatActivity {
         }
     }
 
+    private boolean mIsOnline = true;
 
+    @Override
+    protected void onResume() {
+        super.onResume();
 
+        InternetConnectivityObserver.get().setConsumer(new InternetConnectivityObserver.Consumer() {
+            @Override
+            public void accept(boolean internet) {
 
+                mIsOnline = internet;
+
+                if (internet) {
+                    getSupportActionBar().show();
+                } else {
+                    getSupportActionBar().hide();
+                }
+            }
+        });
+        InternetConnectivityObserver.get().stop();
+        InternetConnectivityObserver.get().start();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+
+    }
 
 
 
