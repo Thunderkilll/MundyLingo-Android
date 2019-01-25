@@ -33,13 +33,10 @@ public class CoursPrefActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.recycler_view_pref);
         courList = new ArrayList<>();
    //remplir la liste
-        Cour  nc = new Cour();
+
         Cursor c = Mydb.getAllCours();
        while(c.moveToNext()){
-            System.out.println();
-            System.out.println();
-            System.out.println();
-            System.out.println();
+           Cour  nc = new Cour();
             nc.setId(String.valueOf(c.getInt(0)));
             nc.setGrammaire(c.getString(1));
             nc.setConjugaison(c.getString(2));
@@ -51,11 +48,14 @@ public class CoursPrefActivity extends AppCompatActivity {
 
         }
         System.out.println("this is list cours size"+courList.size());
+         for (int i =0 ; i<courList.size() ; i++){
+             System.out.println(courList.get(i).getLangue());
+         }
         mAdapter = new SavedCoursAdapters (this, courList);
-        RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(this, 3);
+        RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(this, 1);
 
         recyclerView.setLayoutManager(mLayoutManager);
-        recyclerView.addItemDecoration(new  GridSpacingItemDecoration(30, dpToPx(8), true));
+        recyclerView.addItemDecoration(new  GridSpacingItemDecoration(2, dpToPx(8), true));
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(mAdapter);
 
@@ -106,6 +106,10 @@ public class CoursPrefActivity extends AppCompatActivity {
             }
         }
     }
+
+
+
+
 
 
 

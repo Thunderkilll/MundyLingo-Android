@@ -46,6 +46,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String grammaire = "grammaire"; //will be our primarry key
     private static final String conjugaison = "conjugaison"; //will be our primarry key
     private static final String orthographe = "orthographe"; //will be our primarry key
+    private static final String secondary_key = "idc"; //will be our primarry key
 
     public DatabaseHelper(Context context) {
 
@@ -66,7 +67,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 "  scoreFr  TEXT , scoreEng   TEXT , scoreSpan   TEXT ,scoreGer    TEXT , levelFr   TEXT ,levelEng    TEXT ," +
                 "levelSpan   TEXT ,levelGer    TEXT )");
         Log.i("create user table", "table user created sqlite");
-        db.execSQL("create table " + TABLE_NAME_Cour + "(" + id_cour + " INTEGER PRIMARY KEY AUTOINCREMENT,   grammaire  TEXT ,  conjugaison  TEXT ,  orthographe  TEXT , langue  TEXT  )");
+        db.execSQL("create table " + TABLE_NAME_Cour + "(" + id_cour + " INTEGER PRIMARY KEY AUTOINCREMENT,   grammaire  TEXT ,  conjugaison  TEXT ,  orthographe  TEXT , langue  TEXT , idc TEXT  )");
         Log.i("create cour table", "table cour created sqlite");
 
     }
@@ -198,22 +199,44 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
 
-    public boolean InsertCour(String langue, String text1 , String text2 , String text3) {
+    public boolean InsertCour(String langue, String text1 , String text2 , String text3 , String text4) {
 
         SQLiteDatabase db = this.getWritableDatabase(); //return this database we are working on
-        ContentValues contentValues = new ContentValues();//This class is used to store a set of values
-        contentValues.put(t_langue, langue);
-        contentValues.put(grammaire, text1);
-        contentValues.put(conjugaison, text2);
-        contentValues.put(orthographe, text3);
-        long result = db.insert(TABLE_NAME_Cour, null, contentValues); //insert in the table
-        if (result == -1)
 
-            return false; //insert was not a success
+        if (searchCour(text4)){ // meas that the cours already exists
+            return false;
+        }else{
+            ContentValues contentValues = new ContentValues();//This class is used to store a set of values
+            contentValues.put(t_langue, langue);
+            contentValues.put(grammaire, text1);
+            contentValues.put(conjugaison, text2);
+            contentValues.put(orthographe, text3);
+            contentValues.put(secondary_key , text4);
+            long result = db.insert(TABLE_NAME_Cour, null, contentValues); //insert in the table
+            if (result == -1)
 
-        else
-            return true; //insert was successuful
+                return false; //insert was not a success
 
+            else
+                return true; //insert was successuful
+        }
+
+
+
+
+    }
+
+    public boolean searchCour(String idc){
+
+        SQLiteDatabase db = this.getWritableDatabase(); //return this database we are working on
+        Cursor cur = db.rawQuery("SELECT * from " + TABLE_NAME_Cour +" where idc ="+idc , new String[]{});
+
+        if (cur.getCount() == 0)
+        {
+            return false ;
+        }else{
+            return true ;
+        }
 
     }
 

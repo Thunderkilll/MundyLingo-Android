@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.dev.thunderkilll.mundylingo.Models.Cour;
 import com.dev.thunderkilll.mundylingo.R;
 
@@ -27,6 +28,7 @@ public List<Cour> itemcourList;
 public class MyViewHolders extends RecyclerView.ViewHolder {
 
     public ImageView thumbnail_cours;
+    public ImageView imageView2;
     public TextView titleCours;
     public TextView idLevel;
     public TextView id_langue_cour;
@@ -37,6 +39,7 @@ public class MyViewHolders extends RecyclerView.ViewHolder {
         titleCours = view.findViewById(R.id.Stitle_cours);
         id_langue_cour = view.findViewById(R.id.id_langue_Scour);
         thumbnail_cours = view.findViewById(R.id.thumbnail_Scours);
+        imageView2 = view.findViewById(R.id.imageView2);
 
     }
 
@@ -73,20 +76,23 @@ public class MyViewHolders extends RecyclerView.ViewHolder {
         if (idLangue.equals("2")) {
             //english
             //identify the language of this cours
-            holder.id_langue_cour.setText("Langue  :  English");
+            holder.id_langue_cour.setText("English "+lg.getIdLevel());
             //convertir l'url en utilisant glade et l'afficher
             Glide.with(context)
                     .load(IPadress + "/miniProjetRessources/englishflag.jpg")
+                    .apply(RequestOptions.circleCropTransform())
                     .into(holder.thumbnail_cours);
+
 
 
         }
         if (idLangue.equals("1")) {
             //french
 
-            holder.id_langue_cour.setText("Langue  :  French");
+            holder.id_langue_cour.setText("French");
             Glide.with(context)
                     .load(IPadress + "/miniProjetRessources/french_flag.jpg")
+                    .apply(RequestOptions.circleCropTransform())
                     .into(holder.thumbnail_cours);
 
 
@@ -94,18 +100,20 @@ public class MyViewHolders extends RecyclerView.ViewHolder {
         }
         if (idLangue.equals("4")) {
             //spanish
-            holder.id_langue_cour.setText("Langue  :  Spanish");
+            holder.id_langue_cour.setText("Spanish");
             Glide.with(context)
                     .load(IPadress + "/miniProjetRessources/spanishflag.jpg")
+                    .apply(RequestOptions.circleCropTransform())
                     .into(holder.thumbnail_cours);
 
 
         }
         if (idLangue.equals("3")) {
             //german
-            holder.id_langue_cour.setText("Langue  :  German");
+            holder.id_langue_cour.setText("German");
             Glide.with(context)
                     .load(IPadress + "/miniProjetRessources/germanflag.jpg")
+                    .apply(RequestOptions.circleCropTransform())
                     .into(holder.thumbnail_cours);
 
 

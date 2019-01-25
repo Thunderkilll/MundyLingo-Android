@@ -13,12 +13,16 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.dev.thunderkilll.mundylingo.Activities.ConjugaisonDetailActivity;
 import com.dev.thunderkilll.mundylingo.Activities.CoursPrefActivity;
+import com.dev.thunderkilll.mundylingo.Activities.MainActivity;
 import com.dev.thunderkilll.mundylingo.Adapters.CoursAdapter;
 import com.dev.thunderkilll.mundylingo.Helpers.RecyclerTouchListener;
 import com.dev.thunderkilll.mundylingo.Models.Cour;
@@ -47,7 +51,7 @@ public class CoursFragment extends Fragment {
     private RecyclerView recyclerView;
     private List<Cour> courList;
     private CoursAdapter mAdapter;
-    private FloatingActionButton savedCours;
+
 
     public CoursFragment() {
         // Required empty public constructor
@@ -67,6 +71,7 @@ public class CoursFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true);
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
@@ -83,7 +88,7 @@ public class CoursFragment extends Fragment {
         recyclerView = view.findViewById(R.id.recycler_view_cours);
         courList = getCourList();
         mAdapter = getM2Adapter();
-        savedCours = view.findViewById(R.id.savedCours);
+
         //nombre d'element dans une ligne fill liste view 7atitha ena 3
         RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(getActivity(), 2);
 
@@ -173,14 +178,6 @@ public class CoursFragment extends Fragment {
         }));
 
 
-        savedCours.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getContext(), CoursPrefActivity.class);
-                getActivity().startActivity(intent);
-            }
-
-        });
 
         return view;
     }
@@ -244,6 +241,10 @@ public class CoursFragment extends Fragment {
 
         return Integer.parseInt(numb);
     }
+
+
+
+
 
 }
 

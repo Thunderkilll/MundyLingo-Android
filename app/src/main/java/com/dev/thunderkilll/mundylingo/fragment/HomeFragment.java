@@ -12,8 +12,12 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.dev.thunderkilll.mundylingo.Activities.CoursEnglishActivity;
 import com.dev.thunderkilll.mundylingo.Activities.CoursFrançais;
@@ -65,6 +69,7 @@ public class HomeFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true);
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
@@ -98,7 +103,7 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View view, int position) {
                 Langue langue = itemsList.get(position);
-                Log.d("selected", langue.getTitle()+" is selected");
+
                 //TODO: go to the next view par el intent
                   //les conditions bech najim nit3adda lil les maps
                 if (langue.getTitle().equals("english")) {
@@ -210,6 +215,7 @@ public class HomeFragment extends Fragment {
             }
         }
     }
+
 
 
 

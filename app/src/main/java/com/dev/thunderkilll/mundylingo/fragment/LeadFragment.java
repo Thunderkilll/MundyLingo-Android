@@ -11,9 +11,13 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.dev.thunderkilll.mundylingo.Adapters.UserAdapter;
 import com.dev.thunderkilll.mundylingo.R;
@@ -58,6 +62,7 @@ public class LeadFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true);
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
@@ -176,6 +181,8 @@ public class LeadFragment extends Fragment {
     //TODO: contstruire 4 diffrent adapters to remplir our list (not optimizable)
     //TODO: remplir les 4 recycle view
     //TODO: part of the user adapters
+
+
 
 
 }

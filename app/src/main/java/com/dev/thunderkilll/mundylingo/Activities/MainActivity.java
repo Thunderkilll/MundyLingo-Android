@@ -3,6 +3,8 @@ package com.dev.thunderkilll.mundylingo.Activities;
 import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.Typeface;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -43,7 +45,7 @@ import static com.dev.thunderkilll.mundylingo.Activities.LoginActivity.IPadress;
 
 public class MainActivity extends AppCompatActivity {
     private Toolbar toolbar;
-    Menu menu ;
+    Menu menu;
     public static List<User> UseritemsList;
     public static List<User> UseritemsListFr;
     public static List<User> UseritemsListSp;
@@ -61,6 +63,11 @@ public class MainActivity extends AppCompatActivity {
     public String url5 = IPadress + "/miniProjetWebService/Langue/leaderboard/LeaderboardGER.php";
     private static final String URLi = IPadress + "/miniProjetWebService/Langue/cours/getAllCourses.php";
 
+    //sounds
+    MediaPlayer btn_sound;
+    MediaPlayer btn_sound1;
+    MediaPlayer btn_sound2;
+    MediaPlayer btn_sound3;
 //TODO: getters and setters
 
     public static List<User> getUseritemsListFr() {
@@ -152,6 +159,14 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         toolbar = findViewById(R.id.toolbar); //to set each fragment title
         menu = findViewById(R.id.side_menu);
+
+        //sound effects
+        btn_sound =  MediaPlayer.create(MainActivity.this, R.raw.bouncy_sound);
+        btn_sound1 = MediaPlayer.create(MainActivity.this, R.raw.errorsound);
+        btn_sound2 = MediaPlayer.create(MainActivity.this, R.raw.gigital_life1);
+        btn_sound3 = MediaPlayer.create(MainActivity.this, R.raw.scifi);
+
+
         BottomNavigationView navigation = findViewById(R.id.navigation); //to navigate to each fragment i nead a ref for the nav bottom view
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
@@ -195,23 +210,27 @@ public class MainActivity extends AppCompatActivity {
             switch (item.getItemId()) {
                 case R.id.navigation_shop:
                     // toolbar.setTitle("Shop");
+                    btn_sound.start();
                     fragment = new HomeFragment();
                     loadFragment(fragment);
                     toolbar.setTitle("Home");
                     return true;
                 case R.id.navigation_gifts:
                     //toolbar.setTitle("My Gifts");
+                    btn_sound.start();
                     fragment = new CoursFragment();
                     loadFragment(fragment);
                     toolbar.setTitle("main courses");
                     return true;
                 case R.id.navigation_cart:
                     // toolbar.setTitle("Cart");
+                    btn_sound.start();
                     fragment = new LeadFragment();
                     loadFragment(fragment);
                     toolbar.setTitle("Leaderboard");
                     return true;
                 case R.id.navigation_profile:
+                    btn_sound.start();
                     toolbar.setTitle("Profile");
                     fragment = new ProfileFragment();
                     loadFragment(fragment);
@@ -433,13 +452,13 @@ public class MainActivity extends AppCompatActivity {
 
                         courList.add(c);
                         for (int j = 0; j < courList.size(); j++) {
-                            if(courList.get(j).getLangue().equals("1"))
+                            if (courList.get(j).getLangue().equals("1"))
                                 System.out.println("fr");
-                            if(courList.get(j).getLangue().equals("2"))
+                            if (courList.get(j).getLangue().equals("2"))
                                 System.out.println("en");
-                            if(courList.get(j).getLangue().equals("3"))
+                            if (courList.get(j).getLangue().equals("3"))
                                 System.out.println("ger");
-                            if(courList.get(j).getLangue().equals("4"))
+                            if (courList.get(j).getLangue().equals("4"))
                                 System.out.println("sp");
                         }
                     }
@@ -465,30 +484,27 @@ public class MainActivity extends AppCompatActivity {
 //todo: add menu
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu  ) {
+    public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.side_menu , menu);
+        inflater.inflate(R.menu.side_menu, menu);
         return true;
     }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.side_fav:
-            {
+            case R.id.side_fav: {
                 Intent intent = new Intent(MainActivity.this, CoursPrefActivity.class);
-               startActivity(intent);
+                startActivity(intent);
             }
 
             case R.id.side_settings:
-                Toast.makeText(MainActivity.this ,"option 2",Toast.LENGTH_SHORT).show();
 
-            case  R.id.side_logout:
-                Toast.makeText(MainActivity.this ,"option 3",Toast.LENGTH_SHORT).show();
-
+            case R.id.side_logout:
 
 
         }
-        return true ;
+        return true;
     }
 
 }

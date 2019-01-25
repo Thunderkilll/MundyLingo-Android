@@ -2,6 +2,7 @@ package com.dev.thunderkilll.mundylingo.fragment;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -9,10 +10,14 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
 
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -32,6 +37,7 @@ import java.util.List;
 
 import static com.dev.thunderkilll.mundylingo.Activities.LoginActivity.IPadress;
 
+
 public class DashboardFragment extends Fragment {
 
     private List<Langue> itemsList;
@@ -39,16 +45,42 @@ public class DashboardFragment extends Fragment {
 
     private static final String URLi = IPadress + "/miniProjetWebService/Langue/selectAllLangues.php";
     private static final String TAGDash = DashboardFragment.class.getSimpleName();
+    Typeface OrangeJuce, AgentOrange;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_dashboard, container, false);
         itemsList = new ArrayList<>();
+        AgentOrange = Typeface.createFromAsset(getActivity().getAssets(), "fonts/AgentOrange.ttf");
+        OrangeJuce = Typeface.createFromAsset(getActivity().getAssets(), "fonts/orange juice 2.0.ttf");
+
         mAdapter = new LangueAdapter(getActivity(), itemsList);
         getData(view);
 
         return view;
+    }
+
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        inflater.inflate(R.menu.side_menu, menu);
+
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.side_fav:
+
+            case R.id.side_settings:
+
+
+            case R.id.side_logout:
+
+
+        }
+        return true;
     }
 
 
@@ -107,12 +139,12 @@ class LangueAdapter extends RecyclerView.Adapter<LangueAdapter.MyViewHolder> {
     public class MyViewHolder extends RecyclerView.ViewHolder {
         public TextView name;
         public ImageView thumbnail;
-
+        public Typeface orjuce;
 
         public MyViewHolder(View view) {
             super(view);
             name = view.findViewById(R.id.title);
-
+            orjuce = Typeface.createFromAsset(itemView.getContext().getAssets(), "fonts/orange juice 2.0.ttf");
             thumbnail = view.findViewById(R.id.thumbnail);
         }
     }
@@ -133,9 +165,10 @@ class LangueAdapter extends RecyclerView.Adapter<LangueAdapter.MyViewHolder> {
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, final int position) {
+
         final Langue lg = langueList.get(position);
         holder.name.setText(lg.getTitle());
-
+        holder.name.setTypeface(holder.orjuce);
 
         Glide.with(context)
                 .load(lg.getImage())
