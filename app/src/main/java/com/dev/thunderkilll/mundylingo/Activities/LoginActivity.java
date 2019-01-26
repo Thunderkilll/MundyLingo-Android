@@ -249,7 +249,7 @@ public class LoginActivity extends AppCompatActivity {
 
 
     private void goToHomeOffline() {
-        Intent intent = new Intent(LoginActivity.this , CoursPrefActivity.class);
+        Intent intent = new Intent(LoginActivity.this , OfflineActivity.class);
         startActivity(intent);
         LoginActivity.this.overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
     }
