@@ -60,4 +60,5 @@
     </string>
 
     <string name="devs">Built by Khaled Guesmi and Raoudha Nalouti\n Version: 1.0 beta</string>
+    <string name="offline_start">this is a button to start offline </string>
 </resources>

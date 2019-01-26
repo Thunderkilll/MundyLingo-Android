@@ -12,7 +12,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Activities.CourDetailsActivity"></activity>
+        <activity android:name=".Activities.OfflineActivity"></activity>
+        <activity android:name=".Activities.CourDetailsActivity" />
         <activity
             android:name=".Activities.LoginActivity"
             android:screenOrientation="portrait" />
