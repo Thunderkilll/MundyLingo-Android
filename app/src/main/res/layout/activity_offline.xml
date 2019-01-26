@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/offline"
-    tools:context=".Activities.OfflineActivity">
+    tools:context=".Activities.OfflineActivity"
+    android:id="@+id/offline_layout">
 
     <ImageButton
         android:id="@+id/offline_start"
